@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función cuadrática</title>
+    <!-- Bootstrap CSS from a CDN. This way you don't have to include the bootstrap file yourself -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container d-flex align-items-center">
+        <div class="row">
+            <h1 class="col-12">Soluciones para una función cuadrática de la forma F(x) = Ax<sup>2</sup> + Bx + C</h1>
+            <div class="v-space col-12"></div>
+            <div class="col-12">
+                <p>
+                    A = <span class="mr-4"><input id="coef-A" type="text"></span>
+                    B = <span class="mr-4"><input id="coef-B" type="text"></span>
+                    C = <span class="mr-4"><input id="coef-C" type="text"></span>
+                </p>
+            </div>
+            <div class="v-space col-12"></div>
+            <button id="btn" class="btn">Calcular</button>
+        </div>
+    </div>
+    <div class="container d-flex align-items-center">
+        <div class="roots">
+            <h1>Raices de la función cuando F(x) = 0</h1>
+            <p>x<sub>1</sub> = <span id="x1">resultado</span></p>
+            <p>x<sub>2</sub> = <span id="x2">resultado</span></p>
+        </div>
+    </div>
+</body>
+</html>
