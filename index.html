@@ -14,7 +14,6 @@
         <div class="parameters">
             <h1>Soluciones para una función cuadrática de la forma:</h1>
             <h2>F(x) = Ax<sup>2</sup> + Bx + C</h2>
-            <div class="v-space"></div>
             <div class="initial-info">
                 <div class="coeficientes">
                     <div class="mr-4">A = <input id="coef-A" type="number" step="any"></div>
@@ -22,10 +21,10 @@
                     <div class="mr-4">C = <input id="coef-C" type="number" step="any"></div>
                 </div>
                 <div class="evaluation-box">
-                    <div> x = <input id="eval-x" type="number" step="any"> Proporcionar un valor x si desea evaluar la función F(x) con ese valor.</div>
+                    <p>Proporcionar un valor x si desea evaluar la función F(x) con ese valor.</p>
+                    <div> x = <input id="eval-x" type="number" step="any"> </div>
                 </div>
             </div>
-            <div class="v-space"></div>
             <button id="btn" class="">Calcular</button>
         </div>
         <div class="results">
@@ -33,7 +32,7 @@
             <p>Raíz <strong>x<sub>2</sub></strong> = <span id="x2">resultado</span></p>
             <p>El <strong>vértice</strong> se encuentra en el punto <span id="vertice">(x,y)</span> y es un <span id="minmax">mínimo/máximo</span></p>
             <p>La <strong>ordenada</strong> en el origen F(0) es: <span id="ordenada">resultado</span></p>
-            <p>Resultado de la función <strong>F(x)</strong> con el valor de x proporcionado: <span id="eval">resultado</span></p>
+            <p><strong>F(<span id="read-x">x</span>)</strong> = <span id="eval">resultado</span></p>
         </div>
     </div>
 
