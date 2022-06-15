@@ -9,6 +9,7 @@ const label_vert = document.querySelector("#vertice");
 const label_minmax = document.querySelector("#minmax");
 const label_ord = document.querySelector("#ordenada");
 const label_eval = document.querySelector("#eval");
+const label_read_x = document.querySelector("#read-x");
 
 function fgeneral(a,b,c) {
     const valor_interno_raiz = b*b-4*a*c;
@@ -16,7 +17,7 @@ function fgeneral(a,b,c) {
         const raiz = Math.sqrt(valor_interno_raiz);
         const x1 = (-b+raiz)/(2*a);
         const x2 = (-b-raiz)/(2*a);
-        return [x1,x2];
+        return [parseFloat(x1.toFixed(10)),parseFloat(x2.toFixed(10))];
     }
     return "No tiene solucion real";
 }
@@ -26,7 +27,7 @@ function f(x) {
     const b = parseFloat(inputB.value);
     const c = parseFloat(inputC.value);
     const fx = a*x*x + b*x + c;
-    return fx;
+    return parseFloat(fx.toFixed(10));
 }
 
 function hallar_vertice(a,b) {
@@ -34,30 +35,49 @@ function hallar_vertice(a,b) {
     let minmax = "";
     if (a > 0) {minmax = "mínimo"}
     else {minmax = "máximo"}
-    return [x,f(x),minmax];
+    return [parseFloat(x.toFixed(10)),f(x),minmax];
 }
 
 btn.onclick = function() {
-    const a = parseFloat(inputA.value);
-    const b = parseFloat(inputB.value);
-    const c = parseFloat(inputC.value);
-    const x = parseFloat(inputX.value);
-
-    const raices = fgeneral(a,b,c);
-    const [xv,yv,minmax] = hallar_vertice(a,b);
-    const ordenada = f(0);
-    const fx = f(x);
-    if (typeof(raices) == "object") {
-        const [x1,x2] = raices;
-        label_x1.innerHTML = `${x1}`;
-        label_x2.innerHTML = `${x2}`;
+    if (inputA.value && inputB.value && inputC.value) {
+        const a = parseFloat(inputA.value);
+        const b = parseFloat(inputB.value);
+        const c = parseFloat(inputC.value);
+        
+        const raices = fgeneral(a,b,c);
+        const [xv,yv,minmax] = hallar_vertice(a,b);
+        const ordenada = f(0);
+        if (typeof(raices) == "object") {
+            const [x1,x2] = raices;
+            label_x1.innerHTML = `${x1}`;
+            label_x2.innerHTML = `${x2}`;
+        }
+        if (typeof(raices) == "string") {
+            label_x1.innerHTML = raices;
+            label_x2.innerHTML = raices;
+        }
+        label_vert.innerHTML = `(${xv},${yv})`;
+        label_minmax.innerHTML = `${minmax}`;
+        label_ord.innerHTML = `${ordenada}`;
+        if (inputX.value){
+            const x = parseFloat(inputX.value);
+            const fx = f(x);
+            label_read_x.innerHTML = `${x}`;
+            label_eval.innerHTML = `${fx}`;
+        }
+        else {
+            label_read_x.innerHTML = "x";
+            label_eval.innerHTML = `valor de x no proporcionado`;
+        }
     }
-    if (typeof(raices) == "string") {
-        label_x1.innerHTML = raices;
-        label_x2.innerHTML = raices;
+    else{
+        label_x1.innerHTML = "resultado";
+        label_x2.innerHTML = "resultado";
+        label_vert.innerHTML = `(x,y)`;
+        label_minmax.innerHTML = `mínimo/máximo`;
+        label_ord.innerHTML = `resultado`;
+        label_read_x.innerHTML = "x";
+        label_eval.innerHTML = `resultado`;
+        alert("Favor de proporcionar valores para los coeficientes A, B y C.");
     }
-    label_vert.innerHTML = `(${xv},${yv})`;
-    label_minmax.innerHTML = `${minmax}`;
-    label_ord.innerHTML = `${ordenada}`;
-    label_eval.innerHTML = `${fx}`;
 };
